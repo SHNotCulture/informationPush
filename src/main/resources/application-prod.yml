@@ -1,0 +1,42 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #内网正式地址
+    url: jdbc:mysql://rm-wz9d21p5za0w2ja2x313.mysql.rds.aliyuncs.com:3306/eparkinggovv_sz
+    username: eparkinggovv_sz
+    password: Xdtz1O1Cy4HLPySi
+
+  http:
+    multipart-maxFileSize: 10MB
+    multipart-maxRequestSize: 10MB
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params:
+    count: countSql
+logging:
+  level:
+    com:
+      api:
+        dao: debug
+#mq配置
+com:
+  mqtt:
+    host: tcp://yun1.eparking.top:1883
+    clientid: eparkingmessageclient
+    topic: billing
+    username: eparking
+    password: yxQZDbpeGuZT1Hzr
+    timeout: 10
+    keepalive: 20

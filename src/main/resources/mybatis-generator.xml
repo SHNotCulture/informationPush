@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "https://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="[e|E]xample$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" /><!-- 是否抑制生成代码的注释 -->
+            <property name="suppressDate" value="true" />   <!--生成注释没有时间戳，此处没有注释，应该去掉-->
+        </commentGenerator>
+
+        <!--正式数据库-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://rm-wz9d21p5za0w2ja2xo.mysql.rds.aliyuncs.com:3306/eparkinggovv_sz" userId="eparkinggovv_sz"
+                        password="Xdtz1O1Cy4HLPySi">
+        </jdbcConnection>
+
+        <!--本地数据库-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/eparkinggovv" userId="root"
+                        password="123456">
+        </jdbcConnection>-->
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="com.eparking.informationPush.entity.system"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+
+     <!--   &lt;!&ndash; 自动生成xml（但是好像一直没有生成功，反正也不用xml） &ndash;&gt;
+        <sqlMapGenerator  targetPackage="wang.raye.springboot.model.mapper"
+                          targetProject="${dao.resources.dir}">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>-->
+
+        <!-- 自动生成mapper接口, 可以是 ANNOTATEDMAPPER(注解), XMLMAPPER(xml), MIXEDMAPPER(不知道) -->
+        <javaClientGenerator type="ANNOTATEDMAPPER"
+                             targetPackage="com.eparking.informationPush.dao.sqlProvider" implementationPackage="com.eparking.informationPush.dao.sqlProvider.impl"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+      <!--  <table tableName="%" ></table>--> <!--生成所有表实体-->
+        <!--<table tableName="park_permission" ></table>
+        <table tableName="park_route_conf" ></table>-->
+        <table tableName="park_in_out_cache" ></table>
+
+
+
+        <!--
+        <table tableName="appusers" ></table>
+            <table tableName="appversion" ></table>
+            <table tableName="commend" ></table>
+            <table tableName="userlog" domainObjectName="UserLog"></table>
+            <table tableName="users" domainObjectName="Users"></table>
+        <table tableName="css" domainObjectName="Css">
+            </table>
+            <table tableName="res" domainObjectName="Res">
+            </table>
+            <table tableName="res_link" domainObjectName="ResLink">
+            </table>
+            <table tableName="alert" domainObjectName="Alert">
+            </table>
+            <table tableName="alertType" domainObjectName="AlertType">
+            </table> -->
+
+    </context>
+</generatorConfiguration>
